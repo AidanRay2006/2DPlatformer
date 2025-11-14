@@ -5,6 +5,8 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public GameObject PauseMenu;
+    public static int lives = 2;
+    public static int score = 0;
 
     public static bool _paused;
     // Start is called before the first frame update
@@ -31,6 +33,16 @@ public class GameManager : MonoBehaviour
                 PauseMenu.SetActive(false);
                 _paused = false;
             }
+        }
+    }
+
+    public static void SubtractLife()
+    {
+        lives--;
+
+        if(lives == 0)
+        {
+            //game over stuff
         }
     }
 }

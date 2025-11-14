@@ -624,7 +624,7 @@ TilemapCollider2D:
   m_GameObject: {fileID: 484128900}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: ac24b74ee8206d044ae46eea0e7a4f60, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -1170,7 +1170,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: ac24b74ee8206d044ae46eea0e7a4f60, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -1307,6 +1307,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   jumpForce: 12
+  enemyBumpForce: 25
   groundCollider: {fileID: 861031409}
 --- !u!61 &861031409
 BoxCollider2D:
@@ -1351,7 +1352,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.34, y: 0.05}
+  m_Size: {x: 0.25, y: 0.05}
   m_EdgeRadius: 0
 --- !u!4 &929972810 stripped
 Transform:
@@ -2860,7 +2861,7 @@ TilemapCollider2D:
   m_GameObject: {fileID: 1194500483}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: ac24b74ee8206d044ae46eea0e7a4f60, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -3104,6 +3105,10 @@ PrefabInstance:
       propertyPath: PointB
       value: 
       objectReference: {fileID: 589642232}
+    - target: {fileID: 5229335466292721404, guid: 6a6e804f53003c241bc5e197e191c398, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: ac24b74ee8206d044ae46eea0e7a4f60, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3641,12 +3646,16 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 140468538056584009, guid: fbcab9e497a91c746a824a0564189bbe, type: 3}
       propertyPath: m_Name
-      value: Enemy 3 Parent
+      value: Flying Enemy 1 Parent
       objectReference: {fileID: 0}
     - target: {fileID: 729497183649155559, guid: fbcab9e497a91c746a824a0564189bbe, type: 3}
       propertyPath: Moving
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 861571067375252722, guid: fbcab9e497a91c746a824a0564189bbe, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: ac24b74ee8206d044ae46eea0e7a4f60, type: 2}
     - target: {fileID: 8525438309033638834, guid: fbcab9e497a91c746a824a0564189bbe, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.79
@@ -3703,6 +3712,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 649758140766399609, guid: ac49c498596bdbe4b92b9cf560479063, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: ac24b74ee8206d044ae46eea0e7a4f60, type: 2}
     - target: {fileID: 3733079638600468714, guid: ac49c498596bdbe4b92b9cf560479063, type: 3}
       propertyPath: m_Name
       value: Moving Platform
@@ -3804,6 +3817,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy 2 Parent
       objectReference: {fileID: 0}
+    - target: {fileID: 5229335466292721404, guid: 6a6e804f53003c241bc5e197e191c398, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: ac24b74ee8206d044ae46eea0e7a4f60, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

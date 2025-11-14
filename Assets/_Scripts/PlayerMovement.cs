@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public float speed = 5.0f;
     public float jumpForce = 12.0f;
+    public float enemyBumpForce = 3.0f;
     public BoxCollider2D groundCollider;
 
     private Rigidbody2D rb;
@@ -40,8 +41,33 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
         }
+    }
 
- 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.transform.CompareTag("Enemy"))
+        {
+            Vector2 myCenter = transform.position;
+            Vector2 contactPoint = collision.GetContact(0).point;
+
+            myCenter.y = contactPoint.y;
+            Vector2 forceVector = myCenter - contactPoint;
+            forceVector.y += 1;
+
+            rb.AddForce(forceVector * enemyBumpForce, ForceMode2D.Impulse);
+
+            GameManager.SubtractLife();
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.transform.CompareTag("Enemy"))
+        {
+            GameManager.score += 100;
+
+            Destroy(collision.gameObject);
+        }
     }
 
     private bool IsGrounded()
