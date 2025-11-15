@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed = 5.0f;
+    public float speed = 4.0f;
+    public float deltaSpeed = 3f;
     public float jumpForce = 12.0f;
     public float enemyBumpForce = 3.0f;
     public BoxCollider2D groundCollider;
@@ -28,21 +29,49 @@ public class PlayerMovement : MonoBehaviour
     {
         if (GameManager._gameOver) return;
 
+        Vector3 vel = rb.velocity;
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            transform.position += Vector3.left * speed * Time.deltaTime;
+            //makes turning feel better
+            if(vel.x > 0)
+            {
+                vel.x = 0;
+            }
+
+            vel.x -= deltaSpeed * Time.deltaTime;
+            if (vel.x <= -speed)
+            {
+                vel.x = -speed;
+            }
+        }
+        else if (Input.GetKey(KeyCode.RightArrow))
+        {
+            //makes turning feel better
+            if (vel.x < 0)
+            {
+                vel.x = 0;
+            }
+
+            vel.x += deltaSpeed * Time.deltaTime;
+            if (vel.x >= speed)
+            {
+                vel.x = speed;
+            }
+        }
+        else
+        {
+            vel.x = 0;
         }
 
-        if (Input.GetKey(KeyCode.RightArrow))
-        {
-            transform.position += Vector3.right * speed * Time.deltaTime;
-        }
+        rb.velocity = vel;
 
 
         if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
         }
+
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
