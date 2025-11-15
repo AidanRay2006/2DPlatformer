@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Profiling.Memory.Experimental;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -13,6 +14,9 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody2D rb;
     private const float gravity = 2.0f;
+    private Animator animator;
+    private bool idle, walking, jumping;
+    private SpriteRenderer sr;
 
     // Improvements to consider:
     // - Double jump
@@ -22,6 +26,13 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = gravity;
+
+        animator = GetComponent<Animator>();
+
+        idle = false;
+        walking = false;
+
+        sr = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -32,6 +43,7 @@ public class PlayerMovement : MonoBehaviour
         Vector3 vel = rb.velocity;
         if (Input.GetKey(KeyCode.LeftArrow))
         {
+            sr.flipX = true;
             //makes turning feel better
             if(vel.x > 0)
             {
@@ -43,9 +55,17 @@ public class PlayerMovement : MonoBehaviour
             {
                 vel.x = -speed;
             }
+
+            if (!walking)
+            {
+                walking = true;
+                animator.Play("Walk");
+            }
+            idle = false;
         }
         else if (Input.GetKey(KeyCode.RightArrow))
         {
+            sr.flipX = false;
             //makes turning feel better
             if (vel.x < 0)
             {
@@ -57,10 +77,23 @@ public class PlayerMovement : MonoBehaviour
             {
                 vel.x = speed;
             }
+
+            if (!walking)
+            {
+                walking = true;
+                animator.Play("Walk");
+            }
+            idle = false;
         }
         else
         {
             vel.x = 0;
+            walking = false;
+            if (!idle)
+            {
+                animator.Play("Idle");
+                idle = true;
+            }
         }
 
         rb.velocity = vel;
@@ -69,13 +102,30 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
+            animator.Play("Jump");
+            jumping = true;
         }
 
+        if (IsGrounded() && !idle)
+        {
+            jumping = false;
+            idle = true;
+        }
+        if (vel.x == 0)
+        {
+            idle = true;
+            walking = false;
+        }
 
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.transform.CompareTag("Ground") && jumping)
+        {
+            jumping = false;
+            animator.Play("Idle");
+        }
         if (collision.transform.CompareTag("Enemy"))
         {
             Vector2 myCenter = transform.position;
