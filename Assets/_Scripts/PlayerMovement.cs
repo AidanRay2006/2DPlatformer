@@ -111,11 +111,6 @@ public class PlayerMovement : MonoBehaviour
             jumping = false;
             idle = true;
         }
-        if (vel.x == 0)
-        {
-            idle = true;
-            walking = false;
-        }
 
     }
 
