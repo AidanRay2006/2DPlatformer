@@ -7,13 +7,20 @@ public class Objective : MonoBehaviour
     public Sprite objectiveComplete;
     public GameObject levelCompleteScreen;
 
+    private AudioSource winSound;
+
+    private void Start()
+    {
+        winSound = GetComponent<AudioSource>();
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         SpriteRenderer sr = GetComponent<SpriteRenderer>();
         sr.sprite = objectiveComplete;
 
-        //Remember to add a sound effect!
-
         levelCompleteScreen.SetActive(true);
+
+        winSound.Play();
     }
 }

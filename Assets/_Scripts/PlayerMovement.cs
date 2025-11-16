@@ -11,12 +11,15 @@ public class PlayerMovement : MonoBehaviour
     public float jumpForce = 12.0f;
     public float enemyBumpForce = 3.0f;
     public BoxCollider2D groundCollider;
+    public AudioSource jumpSound;
+    public AudioSource hurtSound;
 
     private Rigidbody2D rb;
     private const float gravity = 2.0f;
     private Animator animator;
     private bool idle, walking, jumping;
     private SpriteRenderer sr;
+
 
     // Improvements to consider:
     // - Double jump
@@ -101,15 +104,17 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
         {
+            jumpSound.Play();
             rb.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
             animator.Play("Jump");
             jumping = true;
         }
 
-        if (IsGrounded() && !idle)
+        if (IsGrounded() && !idle && !walking)
         {
             jumping = false;
             idle = true;
+            animator.Play("Idle");
         }
 
     }
@@ -123,6 +128,8 @@ public class PlayerMovement : MonoBehaviour
         }
         if (collision.transform.CompareTag("Enemy"))
         {
+            hurtSound.Play();
+
             Vector2 myCenter = transform.position;
             Vector2 contactPoint = collision.GetContact(0).point;
 
@@ -140,6 +147,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.transform.CompareTag("Enemy"))
         {
+            AudioSource.PlayClipAtPoint(collision.gameObject.GetComponent<AudioSource>().clip, transform.position);
+
             GameManager.score += 100;
 
             Destroy(collision.gameObject);
