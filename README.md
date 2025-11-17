@@ -1,14 +1,14 @@
 #### MCS 1643 README file
-# **Replace this Project Name**
+# **Assignment 4 - 2D Platformer**
 
-#### Author: *Replace this with your name*
+#### Author: *Aidan Ray*
 
-##### Modified: *2024-09-06*
+##### Modified: *2025-11-20*
 
 <br>
 
 #### Questions for tutorial assignments: (remove this section for projects)
-**Which tutorial is this? **
+**Tutorial 4 **
 
 **1. Did you make any additions beyond the tutorial requirements? If so, what?**
 > &nbsp;
@@ -16,74 +16,9 @@
 > &nbsp;
 
 **2. Did anything give you particular trouble?
-> &nbsp;
+> &nbsp; Making the animation and sounds work.
 ><i>(If something in your assignment doesn't work or you think part of the tutorial can be improved, explain here)</i>   
 > &nbsp;
-
-#### Questions for projects: (remove this section for tutorial assignments)
-**1. What are the controls to your game? How do we play?**   
-
-> &nbsp;
-><i>(art, music, etc. Just tell us where you got it, link it here)</i>   
-> &nbsp;
- 
-
-
-**2. What creative additions/enhancements did you make? How can we find them?**   
-
-> &nbsp;
-><i>(If you don't tell us how to experience them, we could easily miss them.)</i>   
-> &nbsp;
- 
-
-
-**3. Any assets used that you didn't create yourself?**   
-
-> &nbsp;
-><i>(art, music, etc. Just tell us where you got it, link it here)</i>   
-> &nbsp;
- 
-
-
-**4. Did you receive help from anyone outside this class or from anyone in this class that is not in a group with you?**   
-
-> &nbsp;
-><i>(list their names and what they helped with)</i>   
-> &nbsp;
- 
-
-
-**5. Did you get help from any AI Code Assistants?**   
-
-> &nbsp;
-><i>(Including things like Chat-GPT, Copilot, etc. Tell us which .cs file to look in for the citation and describe what you learned)</i>   
-> &nbsp;
- 
-
-
-**6. Did you get help from any online websites, videos, or tutorials?**   
-
-> &nbsp;
-><i>(link them here)</i>   
-> &nbsp;
- 
-
-
-**7. What trouble did you have with this project?**   
-
-> &nbsp;
-><i>(Even if you didn't complete the project, you can still get partial credit if you tell us about why it's incomplete.)</i>   
-> &nbsp;
- 
-
-
-**8. Is there anything else we should know?**   
-
-> &nbsp;
->*No answer given.*
-> &nbsp;
-
----
 
 # This starter is based on Jeremy Gibson Bond's MI 231 Starter, https://github.com/MSU-mi231/Unity-3D-Template-2022.3
 # (which in turn incorporates some collaborative work and suggestions from me)
